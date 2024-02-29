@@ -77,11 +77,36 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
-
-
+```
+#include "main.h"
+#include"stdbool.h"
+bool IRSENSOR;
+void irpair();
+ while (1)
+ {
+ irpair();
+ }
+void irpair()
+{
+IRSENSOR=HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_4);
+if(IRSENSOR==0)
+{
+HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,RESET);
+HAL_Delay(1000);
+HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,SET);
+HAL_Delay(1000);
+}
+else{
+HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,RESET);
+HAL_Delay(1000);
+}
+}
+```
 
 ## Output  :
- 
+ ![WhatsApp Image 2024-02-29 at 20 29 07_38db8007](https://github.com/Prasanavausdevan/EXPERIMENT--02-INTERFACEING-A-DIGITAL-INPUT-TO-IOT-DEVELOPMENT-BOARD-/assets/144870579/bc5cd9ac-d3f2-4eb1-bdb0-046c57d04ec5)
+ ![WhatsApp Image 2024-02-29 at 20 29 07_ad58e2ce](https://github.com/Prasanavausdevan/EXPERIMENT--02-INTERFACEING-A-DIGITAL-INPUT-TO-IOT-DEVELOPMENT-BOARD-/assets/144870579/e3825f79-b4d5-434c-8dd3-376321ac9177)
+
  
  
  
